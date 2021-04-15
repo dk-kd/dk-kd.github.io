@@ -80,3 +80,46 @@ summary {
 .text::after {
   clear: both;
 }
+/* Reference: https://web.monogusa-note.com/flexible-tabs-only-css */
+.div_tab_wrap {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+.label_tab {
+  color: White;
+  background: LightGray;
+  font-weight: bold;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
+  white-space: nowrap;
+  text-align: center;
+  padding: 10px 0.5em;
+  order: -1;
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+  flex: 1;
+}
+.label_tab:not(:last-of-type) {
+  margin-right: 5px;
+}
+.div_tab_content {
+  width: 100%;
+  height: 0;
+  overflow: hidden;
+  opacity: 0;
+}
+.input_switch:checked + .label_tab {
+  background: DeepSkyBlue;
+}
+.input_switch:checked + .label_tab + .div_tab_content {
+  height: auto;
+  overflow: auto;
+  padding: 15px;
+  opacity: 1;
+  transition: 1s opacity;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+}
+.input_switch {
+  display: none;
+}
