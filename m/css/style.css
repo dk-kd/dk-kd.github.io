@@ -70,7 +70,7 @@ summary {
 }
 .text {
   display: inline-block;
-  width: -webkit-calc((100% - 854px) * 0.9);
+  width: -webkit-calc(100% - 874px);
   vertical-align: top;
   padding-left: 10px;
   padding-right: 10px;
