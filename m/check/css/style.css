@@ -1,0 +1,51 @@
+.div_form {
+  display: none;
+}
+.div_form h3 {
+  text-align: center;
+  padding: 5px 10px;
+}
+.div_form p {
+  text-align: center;
+}
+.div_form form {
+  text-align: center;
+}
+.radio_check {
+  display: none;
+}
+.leo {
+  background-color: skyblue;
+}
+.more {
+  background-color: lightgreen;
+}
+.vivid {
+  background-color: red;
+}
+.wonder {
+  background-color: orange;
+}
+.night {
+  background-color: mediumpurple;
+}
+.label_check {
+  cursor: pointer;
+  font-size: x-large;
+  user-select: none;
+  padding: 10px 20px;
+  margin: 10px 5px;
+  border-radius: 10px;
+}
+.radio_check:checked + .label_check {
+  font-weight: bold;
+}
+.radio_check:not(:checked) + .label_check {
+  background-color: lightgray;
+}
+.div_unit {
+  display: none;
+}
+button {
+  cursor: pointer;
+}

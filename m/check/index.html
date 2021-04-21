@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://dk-kd.github.io/m/css/style.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="./js/data.js"></script>
+    <script src="./js/funcs.js"></script>
+    <script src="./js/main.js"></script>
+    <title>セカイ診断</title>
+</head>
+
+<body>
+    <div class="main">
+        <h1>セカイ診断</h1>
+        <hr />
+        <div id="div_0" class="div_form" style="display:block;">
+            <p>ここでは、どのユニットのことを学ぶか決められていない人のために、あなたにおすすめのユニットを診断します。</p>
+            <p>あまり深く考えず、直感的に感じたものを答えてみてください。</p>
+            <p>(ゲーム内のチュートリアルを再現したものです)</p>
+            <form id="form_0">
+                <button type="button" onclick="startCheck()">はじめる</button>
+            </form>
+        </div>
+        <div id="div_1" class="div_form">
+            <h3>聴こえてきた想いは…</h3>
+            <form id="form_1">
+                <!--
+                <input type="radio" name="input_1" id="input_1_1" class="radio_check" value="leo" />
+                <label for="input_1_1" class="label_check leo">切なく優しい想い</label>
+                <input type="radio" name="input_1" id="input_1_2" class="radio_check" value="more" />
+                <label for="input_1_2" class="label_check more">希望にあふれた想い</label>
+                <input type="radio" name="input_1" id="input_1_3" class="radio_check" value="vivid" />
+                <label for="input_1_3" class="label_check vivid">熱くパワフルな想い</label>
+                <input type="radio" name="input_1" id="input_1_4" class="radio_check" value="wonder" />
+                <label for="input_1_4" class="label_check wonder">楽しく明るい想い</label>
+                <input type="radio" name="input_1" id="input_1_5" class="radio_check" value="night" />
+                <label for="input_1_5" class="label_check night">苦しみに満ちた想い</label>
+                -->
+            </form>
+
+        </div>
+        <div id="div_2" class="div_form">
+            <h3>その音色は…</h3>
+            <form id="form_2">
+                <!--
+                <input type="radio" name="input_2" id="input_2_1" class="radio_check" value="leo" />
+                <label for="input_2_1" class="label_check leo">きらめく青の音色</label>
+                <input type="radio" name="input_2" id="input_2_2" class="radio_check" value="more" />
+                <label for="input_2_2" class="label_check more">かがやく緑の音色</label>
+                <input type="radio" name="input_2" id="input_2_3" class="radio_check" value="vivid" />
+                <label for="input_2_3" class="label_check vivid">鮮やかな赤の音色</label>
+                <input type="radio" name="input_2" id="input_2_4" class="radio_check" value="wonder" />
+                <label for="input_2_4" class="label_check wonder">はじける黄色の音色</label>
+                <input type="radio" name="input_2" id="input_2_5" class="radio_check" value="night" />
+                <label for="input_2_5" class="label_check night">揺れる紫の音色</label>
+                -->
+            </form>
+
+        </div>
+        <div id="div_3" class="div_form">
+            <h3>見えた景色は…</h3>
+            <form id="form_3">
+                <!--
+                <input type="radio" name="input_3" id="input_3_1" class="radio_check" value="leo" />
+                <label for="input_3_1" class="label_check leo">一面の星空</label>
+                <input type="radio" name="input_3" id="input_3_2" class="radio_check" value="more" />
+                <label for="input_3_2" class="label_check more">ペンライトの光あふれるステージ</label>
+                <input type="radio" name="input_3" id="input_3_3" class="radio_check" value="vivid" />
+                <label for="input_3_3" class="label_check vivid">大好きな自分の住む街</label>
+                <input type="radio" name="input_3" id="input_3_4" class="radio_check" value="wonder" />
+                <label for="input_3_4" class="label_check wonder">笑顔あふれるテーマパーク</label>
+                <input type="radio" name="input_3" id="input_3_5" class="radio_check" value="night" />
+                <label for="input_3_5" class="label_check night">何もない真っ白な景色</label>
+                -->
+            </form>
+        </div>
+        <div id="div_4" class="div_form">
+            <p>あなたにおすすめのユニットは…</p>
+            <div id="div_leo" class="div_unit">
+                <h3 class="leo">Leo/need</h3>
+                <div class="movie">
+                    <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/UcPzhZ_0upc"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="text">
+                    <b>あらすじ</b><br />
+                    様々な事情からすれ違い、幼馴染みと疎遠になってしまった星乃一歌。<br />
+                    しかし、幼馴染みのひとりで療養をしていた、天馬咲希が学校に戻ってきたことをきっかけに、遠ざかっていた4人の距離に変化が表れ始める。
+                </div>
+            </div>
+            <div id="div_more" class="div_unit">
+                <h3 class="more">MORE MORE JUMP！</h3>
+                <div class="movie">
+                    <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/nKjDq1Azo_o"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="text">
+                    <b>あらすじ</b><br />
+                    アイドルを夢見るものの、オーディションには不合格続きの花里みのり。<br />
+                    それでも、憧れのアイドル"桐谷遥"の存在を胸に、頑張り続けていた。<br />
+                    ところがその桐谷遥が突如、アイドルを辞め、芸能界を引退してしまう。
+                </div>
+            </div>
+            <div id="div_vivid" class="div_unit">
+                <h3 class="vivid">Vivid BAD SQUAD</h3>
+                <div class="movie">
+                    <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/9IxqJbWLBSc"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="text">
+                    <b>あらすじ</b><br />
+                    内気で何をするにもびくびくしてしまう小豆沢こはね。<br />
+                    ある日、裏通りから聞こえてきた歌と音楽に衝撃を受ける。<br />
+                    そして、それを歌っていた白石杏に導かれるように、ストリートの音楽へと足を踏み入れていく。
+                </div>
+            </div>
+            <div id="div_wonder" class="div_unit">
+                <h3 class="wonder">ワンダーランズ×ショウタイム</h3>
+                <div class="movie">
+                    <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/4nLYBtaNRXA"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="text">
+                    <b>あらすじ</b><br />
+                    世界一のショースターを夢見る天馬司は、人気テーマパークのキャストアルバイトとして採用される。<br />
+                    しかし、配属されたのは客も寄り付かないさびれたステージ。<br />
+                    そこでただひとり、ステージの復活を目指して頑張る鳳えむと出会う。<br />
+                </div>
+            </div>
+            <div id="div_night" class="div_unit">
+                <h3 class="night">25時、ナイトコードで。</h3>
+                <div class="movie">
+                    <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/I6AsSoMDzII"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="text">
+                    <b>あらすじ</b><br />
+                    ボイスチャットツール『ナイトコード』でやり取りをしているサークル仲間と日々楽曲づくりをしている宵崎奏。<br />
+                    お互い顔も名前も知らないが、それなりにうまくやっていたはずだった。<br />
+                    しかし、ある日を境にサークル仲間のひとりと連絡が取れなくなってしまう。
+                </div>
+            </div>
+            <hr />
+            <form id="form_4">
+                <button type="button" onclick="resetCheck()">最初からやり直す</button>
+            </form>
+        </div>
+    </div>
+</body>
