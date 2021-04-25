@@ -1,51 +1,65 @@
 .div_form {
-  display: none;
+    display: none;
 }
+
 .div_form h3 {
-  text-align: center;
-  padding: 5px 10px;
+    text-align: center;
+    padding: 5px 10px;
 }
+
 .div_form p {
-  text-align: center;
+    text-align: center;
 }
+
 .div_form form {
-  text-align: center;
+    text-align: center;
 }
+
 .radio_check {
-  display: none;
+    display: none;
 }
+
 .leo {
-  background-color: skyblue;
+    background-color: skyblue;
 }
+
 .more {
-  background-color: lightgreen;
+    background-color: lightgreen;
 }
+
 .vivid {
-  background-color: red;
+    background-color: red;
 }
+
 .wonder {
-  background-color: orange;
+    background-color: orange;
 }
+
 .night {
-  background-color: mediumpurple;
+    background-color: mediumpurple;
 }
+
 .label_check {
-  cursor: pointer;
-  font-size: x-large;
-  user-select: none;
-  padding: 10px 20px;
-  margin: 10px 5px;
-  border-radius: 10px;
+    cursor: pointer;
+    font-size: x-large;
+    user-select: none;
+    padding: 10px 20px;
+    margin: 10px 5px;
+    border-radius: 10px;
 }
-.radio_check:checked + .label_check {
-  font-weight: bold;
+
+.radio_check:checked+.label_check {
+    font-weight: bold;
 }
-.radio_check:not(:checked) + .label_check {
-  background-color: lightgray;
+
+.radio_check:not(:checked)+.label_check {
+    background-color: lightgray;
 }
+
 .div_unit {
-  display: none;
+    display: none;
 }
+
 button {
-  cursor: pointer;
+    cursor: pointer;
 }

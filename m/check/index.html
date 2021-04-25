@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://dk-kd.github.io/m/css/style.css" />
     <link rel="stylesheet" href="./css/style.css" />
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://dk-kd.github.io/m/js/audio.js"></script>
     <script src="./js/data.js"></script>
     <script src="./js/funcs.js"></script>
     <script src="./js/main.js"></script>
@@ -19,12 +20,27 @@
         <h1>セカイ診断</h1>
         <hr />
         <div id="div_0" class="div_form" style="display:block;">
+            <div class="image">
+                <img src="img/check.PNG" />
+            </div>
+            <div class="text">
+                <button type="button" class="button_audio" onclick="playAudio('check.mp3')">
+                    ボイスを再生する
+                </button><br />
+                <br />
+                「キミは……みんなの想いを、そしてセカイを見守りたいって思ってくれてるんだね。」<br />
+                「ねえ。ちょうど新しいセカイが生まれようとしてるよ。」<br />
+                「キミにも聴こえる？」
+            </div>
+            <hr />
             <p>ここでは、どのユニットのことを学ぶか決められていない人のために、あなたにおすすめのユニットを診断します。</p>
             <p>あまり深く考えず、直感的に感じたものを答えてみてください。</p>
             <p>(ゲーム内のチュートリアルを再現したものです)</p>
             <form id="form_0">
                 <button type="button" onclick="startCheck()">はじめる</button>
             </form>
+            <br />
+            <br />
         </div>
         <div id="div_1" class="div_form">
             <h3>聴こえてきた想いは…</h3>
