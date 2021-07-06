@@ -1,45 +1,51 @@
 <!DOCTYPE HTML>
 <html lang="ja">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" />
-        <link rel="stylesheet" href="https://dk-kd.github.io/m/css/style.css" />
-        <title>プロジェクトセカイ インストール遷移画面</title>
-        <script>
-            window.addEventListener("load", () => {
-                const user_agent = navigator.userAgent;
-                const link_ios = "https://apple.co/3bI8jfG";
-                const link_android = "https://play.google.com/store/apps/details?id=com.sega.pjsekai&hl=ja";
-                console.log(user_agent);
-                if(user_agent.indexOf("iPhone") > 0){
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://dk-kd.github.io/m/css/style.css" />
+    <title>プロジェクトセカイ インストール遷移画面</title>
+    <script>
+        window.addEventListener("load", () => {
+            const user_agent = navigator.userAgent;
+            const link_ios = "https://apple.co/3bI8jfG";
+            const link_android = "https://play.google.com/store/apps/details?id=com.sega.pjsekai&hl=ja";
+            console.log(user_agent);
+            const getLi = (title, link) => {
+                const li = document.createElement("li");
+                const a = document.createElement("a");
+                a.innerText = title;
+                a.href = link;
+                li.appendChild(a);
+                return li;
+            }
+            const ul_link = document.getElementById("ul_link");
+            ul_link.appendChild(getLi("iOS", link_ios));
+            ul_link.appendChild(getLi("Andriod", link_android));
+            setTimeout(() => {
+                if (user_agent.indexOf("iPhone") > 0) {
                     location.href = link_ios;
                 }
-                else if(user_agent.indexOf("iPad") > 0){
+                else if (user_agent.indexOf("iPad") > 0) {
                     location.href = link_ios;
                 }
-                else if(user_agent.indexOf("Android") > 0){
+                else if (user_agent.indexOf("Android") > 0) {
                     location.href = link_android;
                 }
-                const getLi = (title, link) =>{
-                    const li = document.createElement("li");
-                    const a = document.createElement("a");
-                    a.innerText = title;
-                    a.href = link;
-                    li.appendChild(a);
-                    return li;
-                }
-                const ul_link = document.getElementById("ul_link");
-                ul_link.appendChild(getLi("iOS", link_ios));
-                ul_link.appendChild(getLi("Andriod", link_android));        
-            });
-        </script>
-    </head>
-    <body>
-        <div class="main">
-            <p>インストール画面が開かない場合は、以下のリンクを直接クリックしてください。</p>
-            <ul id="ul_link">
-            </ul>
-        </div>
-    </body>
+            }, 3000);
+        });
+    </script>
+</head>
+
+<body>
+    <div class="main">
+        <p id="p_note">3秒後にインストール画面に遷移します……</p>
+        <p id="p_stay">ページが切り替わらない場合は、以下のリンクを直接クリックしてください。</p>
+        <ul id="ul_link">
+        </ul>
+    </div>
+</body>
+
 </html>
