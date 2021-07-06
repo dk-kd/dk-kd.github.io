@@ -24,24 +24,26 @@
             const ul_link = document.getElementById("ul_link");
             ul_link.appendChild(getLi("iOS", link_ios));
             ul_link.appendChild(getLi("Andriod", link_android));
-            setTimeout(() => {
-                if (user_agent.indexOf("iPhone") > 0) {
-                    location.href = link_ios;
-                }
-                else if (user_agent.indexOf("iPad") > 0) {
-                    location.href = link_ios;
-                }
-                else if (user_agent.indexOf("Android") > 0) {
-                    location.href = link_android;
-                }
-            }, 3000);
+            if (user_agent.indexOf("iPhone") > 0) {
+                location.href = link_ios;
+            }
+            else if (user_agent.indexOf("iPad") > 0) {
+                location.href = link_ios;
+            }
+            else if (user_agent.indexOf("Android") > 0) {
+                location.href = link_android;
+            }
+            else {
+                document.getElementById("p_unavailable").style.visibility = "visible";
+            }
         });
     </script>
 </head>
 
 <body>
     <div class="main">
-        <p id="p_note">3秒後にインストール画面に遷移します……</p>
+        <p id="p_unavailable" style="color: red; visibility: hidden;">※iPhone, iPad, Android端末ではないと判定されたため、自動遷移は行われません。
+        </p>
         <p id="p_stay">ページが切り替わらない場合は、以下のリンクを直接クリックしてください。</p>
         <ul id="ul_link">
         </ul>
