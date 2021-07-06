@@ -34,7 +34,7 @@
                 location.href = link_android;
             }
             else {
-                document.getElementById("p_unavailable").style.visibility = "visible";
+                document.getElementById("p_unavailable").style.display = "block";
             }
         });
     </script>
@@ -42,7 +42,7 @@
 
 <body>
     <div class="main">
-        <p id="p_unavailable" style="color: red; visibility: hidden;">※iPhone, iPad, Android端末ではないと判定されたため、自動遷移は行われません。
+        <p id="p_unavailable" style="color: red; display: none;">※iPhone, iPad, Android端末ではないと判定されたため、自動遷移は行われません。
         </p>
         <p id="p_stay">ページが切り替わらない場合は、以下のリンクを直接クリックしてください。</p>
         <ul id="ul_link">
