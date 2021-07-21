@@ -37,11 +37,12 @@
                     }
                 }
             }
-            let url = mv_list[Math.floor(Math.random() * mv_list.length)];
-            url = url.replace("watch?v=", "embed/") + "?rel=0";
+            const url = mv_list[Math.floor(Math.random() * mv_list.length)];
+            location.href = url;
+            let iframe_url = url.replace("watch?v=", "embed/") + "?rel=0";
             let iframe = document.createElement("iframe");
-            iframe.src = url;
-            document.getElementById("div_video").appendChild(iframe);
+            iframe.src = iframe_url;
+            document.getElementById("div_video").appendChild(iframe);            
         });
     </script>
 </head>
