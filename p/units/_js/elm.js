@@ -25,17 +25,9 @@ class ElmGenerator {
                 <div class="tab-pane fade show active" id="div_tab_home" role="tabpanel" aria-labelledby="home-tab">
                     <div id="content_about"></div>
                     <div id="carousel_about" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-inner" style="background-color: lightseagreen;">
-                            <div class="carousel-item active">
-                                <div class="img_carousel_wrap">
-                                    <img class="img_carousel" src="https://img.youtube.com/vi/clzRL_0M-zw/sddefault.jpg">
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <div class="img_carousel_wrap">
-                                    <img class="img_carousel" src="https://img.youtube.com/vi/clzRL_0M-zw/sddefault.jpg">
-                                </div>
-                            </div>
+                        <div id="carousel_about_inner" class="carousel-inner" style="background-color: lightseagreen;">
+                            
+                        
                         </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#carousel_about"
                             data-bs-slide="prev">
@@ -95,10 +87,33 @@ class ElmGenerator {
         div.appendChild(createElm("hr"));
     }
     setContentAbout = (arr, unit_name) => {
+        const getCarouselItem = (link, is_active) => {
+            const div = document.createElement("div");
+            div.classList.add("carousel-item");
+            if(is_active){
+                div.classList.add("active");
+            }
+            const wrap = document.createElement("div");
+            wrap.classList.add("img_carousel_wrap");
+            const img = document.createElement("img");
+            img.classList.add("img_carousel");
+            img.src = link;
+            wrap.appendChild(img);
+            div.appendChild(wrap);
+            console.log(div);
+            return div;
+        }
         const div = document.getElementById("content_about");
         const p = createElm("p", arr.description);
         p.innerHTML = p.innerHTML.replace(/\{0\}/g, "<b>" + unit_name + "(略称: " + arr.nickname + ")</b>");
         div.appendChild(p);
+        const carousel_inner = document.getElementById("carousel_about_inner");
+        carousel_inner.style.backgroundColor = arr.color;
+        let is_active = true;
+        for(let link of arr.images){
+            carousel_inner.appendChild(getCarouselItem(link, is_active));
+            is_active = false;
+        }
     }
     setContentProfile = (arr) => {
         const getRow = (a) => {
@@ -124,12 +139,15 @@ class ElmGenerator {
             return row;
         }
         const div = document.getElementById("content_profile");
-        for (let a of arr) {
+        for (let a of arr.sekai) {
             div.appendChild(getRow(a));
         }
     };
     setContentStory = (arr) => {
         const getRow = (tmp_arr) => {
+            if(tmp_arr.length == 0){
+                return createElm("div", "準備中", "text-muted");
+            }
             const row = document.createElement("div");
             row.classList.add("row");
             for (let a of tmp_arr) {
@@ -160,7 +178,6 @@ class ElmGenerator {
         div.appendChild(document.createElement("hr"));
         div.appendChild(createElm("h3", "メインストーリー注目シーン"));
         div.appendChild(getRow(arr.main.images));
-
         const div_events = document.getElementById("collapse_event_stories");
         div_events.appendChild(getRow(arr.events));
     }
@@ -267,15 +284,6 @@ class ElmGenerator {
             document.getElementById("modal_title").innerText = "";
             $("#modal_iframe").attr("src", "");
         });
-        const resizeCarouselImg = () => {
-            const iw = $("#ul_nav").innerWidth();
-            $(".img_carousel").each((i, e) => {
-                $(e).innerHeight(Math.min(iw, 711) * 9 / 16);
-            })
-        };
-        window.addEventListener("resize", resizeCarouselImg);
-        window.addEventListener("load", resizeCarouselImg);
-
     }
 }
 const createElm = (tag, text = null, className = null) => {

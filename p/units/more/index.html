@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="robots" content="noindex,nofollow,noarchive" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="../_css/style.css" />
@@ -22,55 +23,76 @@
             },
             about: {
                 nickname: "モモジャン",
-                description: "{0}は、アイドルを目指す1人とアイドルを辞めた3人による異色のアイドルユニットです。"
+                description: "{0}は、アイドルを目指す1人とアイドルを辞めた3人による異色のアイドルユニットです。",
+                images: [
+                    "img/more_c_0.PNG",
+                    "img/more_c_1.PNG",
+                    "img/more_c_2.PNG",
+                    "img/more_c_3.PNG"
+                ],
+                color: "aquamarine"
             },
-            profiles: [
-                {
-                    name: "花里 みのり",
-                    rubi: "はなさと みのり",
-                    cv: "小倉 唯",
-                    link: "https://www.youtube.com/watch?v=clzRL_0M-zw",
-                    description: "純粋でひたむきな頑張り屋。\nアイドルグループ『ASRUN』の桐谷遥を目にしてから、アイドルを目指すようになった。\n様々なオーディションを受けるが、落ち続けている。"
-                },
-                {
-                    name: "桐谷 遥",
-                    rubi: "きりたに はるか",
-                    cv: "吉岡 茉祐",
-                    link: "https://www.youtube.com/watch?v=MXLwDOUIAAI",
-                    description: "国民的人気アイドルグループ『ASRUN』に所属。\nカリスマ的な存在で、グループ内でも絶大な人気を誇っていた。\nだが、グループの解散を機に芸能界を引退し、みのりが通う宮益坂女子学園に復学する。"
-                },
-                {
-                    name: "桃井 愛莉",
-                    rubi: "ももい あいり",
-                    cv: "降幡 愛",
-                    link: "https://www.youtube.com/watch?v=93v55ISzkKY",
-                    description: "バラエティ番組などに出演し、かつて人気を博していた元アイドル。\n自信家で強引な面もあるが、アイドルの仕事に愛と情熱と強い誇りを持っていた。\n今では、ある事情から事務所を辞め、アイドルも引退してしまっている。"
-                },
-                {
-                    name: "日野森 雫",
-                    rubi: "ひのもり しずく",
-                    cv: "本泉 莉奈",
-                    link: "https://www.youtube.com/watch?v=PdKVjnJ8bH0",
-                    description: "人気アイドルグループ『Cheerful＊Days』に所属している現役アイドル。\nミステリアスな大人の魅力を感じさせる容姿で、ファンを虜にしている。\nしかし、グループの仲間からは妬まれることも。\n愛莉とは研究生時代の同期。"
+            profiles: {
+                sekai: [
+                    {
+                        name: "花里 みのり",
+                        rubi: "はなさと みのり",
+                        cv: "小倉 唯",
+                        link: "https://www.youtube.com/watch?v=clzRL_0M-zw",
+                        description: "純粋でひたむきな頑張り屋。\nアイドルグループ『ASRUN』の桐谷遥を目にしてから、アイドルを目指すようになった。\n様々なオーディションを受けるが、落ち続けている。"
+                    },
+                    {
+                        name: "桐谷 遥",
+                        rubi: "きりたに はるか",
+                        cv: "吉岡 茉祐",
+                        link: "https://www.youtube.com/watch?v=MXLwDOUIAAI",
+                        description: "国民的人気アイドルグループ『ASRUN』に所属。\nカリスマ的な存在で、グループ内でも絶大な人気を誇っていた。\nだが、グループの解散を機に芸能界を引退し、みのりが通う宮益坂女子学園に復学する。"
+                    },
+                    {
+                        name: "桃井 愛莉",
+                        rubi: "ももい あいり",
+                        cv: "降幡 愛",
+                        link: "https://www.youtube.com/watch?v=93v55ISzkKY",
+                        description: "バラエティ番組などに出演し、かつて人気を博していた元アイドル。\n自信家で強引な面もあるが、アイドルの仕事に愛と情熱と強い誇りを持っていた。\n今では、ある事情から事務所を辞め、アイドルも引退してしまっている。"
+                    },
+                    {
+                        name: "日野森 雫",
+                        rubi: "ひのもり しずく",
+                        cv: "本泉 莉奈",
+                        link: "https://www.youtube.com/watch?v=PdKVjnJ8bH0",
+                        description: "人気アイドルグループ『Cheerful＊Days』に所属している現役アイドル。\nミステリアスな大人の魅力を感じさせる容姿で、ファンを虜にしている。\nしかし、グループの仲間からは妬まれることも。\n愛莉とは研究生時代の同期。"
+                    }
+                ],
+                virtual: {
                 }
-            ],
+            },
             stories: {
                 main: {
                     link: "https://www.youtube.com/watch?v=026uQePjgiw",
                     description: "アイドルを夢見るものの、オーディションには不合格続きの花里みのり。\nそれでも、憧れのアイドル\"桐谷遥\"の存在を胸に、頑張り続けていた。\nところがその桐谷遥が突如、アイドルを辞め、芸能界を引退してしまう。",
                     images: [
-                        {
-                            link: "./img/more_1.PNG",
-                            title: "title",
-                            description: "aaa"
-                        }
                     ]
                 },
                 events: [
                     {
+                        link: "https://pbs.twimg.com/media/EnFZstUW8AU5m54?format=jpg&name=900x900",
+                        title: "ここからRE:START！",
+                        description: "MORE MORE JUMP！として活動することになった愛莉達。\nさっそく所属する事務所を探し始めるが……。\n「この４人で――アイドルになってみせる！」\n４人の決意が導き出した答えとは——！？"
+                    },
+                    {
+                        link: "https://pbs.twimg.com/media/EsJ1sQiUYAgkghz?format=jpg&name=900x900",
+                        title: "Color of Myself！",
+                        description: "いよいよ始まったMORE MORE JUMP！の生配信！\n順調な滑り出しに見えたが、雫にはある懸念が……？\n過去の自分と今の自分。\n選択を迫られた雫が、考え抜いた末にたどり着いた答えとは！？"
+                    },
+                    {
                         link: "https://pbs.twimg.com/media/Ew1RoKbVIAELeec?format=jpg&name=900x900",
                         title: "届け！HOPEFUL STAGE♪",
                         description: "ネット配信で活動を続けるMORE MORE JUMP！\nしかしみのりは、自分がファンに受け入れられていないことに悩んでいた。\nそんな中、元アイドルの有名配信者とのコラボ配信をすることになり……！？"
+                    },
+                    {
+                        link: "https://pbs.twimg.com/media/E1zz-K-UUAMP1_3?format=jpg&name=900x900",
+                        title: "頑張るあなたにBreak Time！",
+                        description: "配信も軌道に乗り始め、視聴者を飽きさせないために誰よりも新企画作りに励む遥。\n日々の練習に自主練、学校の勉強やアイドル活動——息つく間もなくストイックに取り組む遥を見て、雫は心配になってしまい……？"
                     }
                 ]
             },
