@@ -219,6 +219,9 @@ class ElmGenerator {
         const img = document.createElement("img");
         img.src = this.getYouTubeThumbnailLink(link);
         a.appendChild(img);
+        const i = document.createElement("i");
+        i.classList.add("fab", "fa-youtube", "img_wrap_icon");
+        a.appendChild(i);
         return a;
     };
     getYouTubeId = (v_link) => {

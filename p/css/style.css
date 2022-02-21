@@ -27,6 +27,14 @@ body{
   left: 50%;
   transform: translate(-50%, -50%);
 }
+.img_wrap_icon {
+  position: absolute;
+  font-size: xx-large;
+  top: 0;
+  left: 0.25rem;
+  text-decoration: none;
+  color: red;
+}
 
 .img_carousel_wrap {
   width: 100%;
