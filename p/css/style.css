@@ -27,13 +27,14 @@ body{
   left: 50%;
   transform: translate(-50%, -50%);
 }
-.img_wrap_icon {
+.img_wrap_icon{
   position: absolute;
   font-size: xx-large;
   top: 0;
-  left: 0.25rem;
+  left: 0;
   text-decoration: none;
   color: red;
+  background-image: radial-gradient(white 0% 40%, transparent 40% 100%);
 }
 
 .img_carousel_wrap {

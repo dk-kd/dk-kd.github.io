@@ -100,7 +100,6 @@ class ElmGenerator {
             img.src = link;
             wrap.appendChild(img);
             div.appendChild(wrap);
-            console.log(div);
             return div;
         }
         const div = document.getElementById("content_about");
@@ -116,13 +115,12 @@ class ElmGenerator {
         }
     }
     setContentProfile = (arr) => {
-        const getRow = (a) => {
+        const getRow = (a, is_sekai) => {
             const row = document.createElement("div");
             row.classList.add("row");
             const col1 = document.createElement("div");
             col1.classList.add("col-md-6");
-            const img_wrap = this.getImgWrapWithModalLink("自己紹介動画 (" + a.name + ")", a.link);
-            col1.appendChild(img_wrap);
+            col1.appendChild(this.getImgWrapWithModalLink("自己紹介動画 (" + a.name + ")", a.link));
             row.appendChild(col1);
             const col2 = document.createElement("div");
             col2.classList.add("col-md-6");
@@ -130,8 +128,10 @@ class ElmGenerator {
             div_profile_wrap.classList.add("div_profile_wrap");
             const div_head = document.createElement("div");
             div_head.appendChild(createElm("span", a.name, "fs-5 fw-bold d-inline-block"));
-            div_head.appendChild(createElm("span", "(" + a.rubi + ")", "fs-5 d-inline-block ps-2"));
-            div_head.appendChild(createElm("span", "CV: " + a.cv, "fs-6 text-muted d-inline-block ps-2"));
+            if(is_sekai){
+                div_head.appendChild(createElm("span", "(" + a.rubi + ")", "fs-5 d-inline-block ps-2"));
+                div_head.appendChild(createElm("span", "CV: " + a.cv, "fs-6 text-muted d-inline-block ps-2"));
+            }
             div_profile_wrap.appendChild(div_head);
             div_profile_wrap.appendChild(createElm("div", a.description, "mt-2"));
             col2.appendChild(div_profile_wrap);
@@ -139,8 +139,13 @@ class ElmGenerator {
             return row;
         }
         const div = document.getElementById("content_profile");
+        div.appendChild(createElm("h4", "ユニットメンバー","mt-2"));
         for (let a of arr.sekai) {
-            div.appendChild(getRow(a));
+            div.appendChild(getRow(a, true));
+        }
+        if(typeof arr.virtual != "undefined"){
+            div.appendChild(createElm("h4", "バーチャル・シンガー","mt-2"));
+            div.appendChild(getRow(arr.virtual, false));
         }
     };
     setContentStory = (arr) => {
@@ -182,31 +187,38 @@ class ElmGenerator {
         div_events.appendChild(getRow(arr.events));
     }
     setContentMusic = (arr) => {
-        const getRow = (tmp_arr) => {
+        const getRow = (tmp_arr, is_original) => {
             const row = document.createElement("div");
             row.classList.add("row");
             for (let a of tmp_arr) {
-                row.appendChild(getCol(a));
+                row.appendChild(getCol(a, is_original));
             }
             return row;
         }
-        const getCol = (a) => {
+        const getCol = (a, is_original) => {
             const div_head = document.createElement("div");
             div_head.appendChild(createElm("span", a.title, "fw-bold fs-5"));
             div_head.appendChild(createElm("span", " / " + a.creator, "text-muted fs-6"));
-            return this.getCardCol(a.title, a.link,"『" + a.caption + "』\n", div_head);
+            const caption = is_original ? "【" + a.caption + "】" : "『" + a.caption + "』"
+            return this.getCardCol(a.title, a.link, caption, div_head);
         }
         const div = document.getElementById("div_tab_musics");
         div.appendChild(createElm("h3", "書き下ろし曲 PickUp"));
-        div.appendChild(getRow(arr.original));
+        div.appendChild(getRow(arr.original, true));
         div.appendChild(createElm("h3", "カバー曲 PickUp"));
-        div.appendChild(getRow(arr.cover));
+        div.appendChild(getRow(arr.cover, false));
     }
     getImgWrapWithModalLink = (title, link) => {
         const img_wrap = document.createElement("div");
         img_wrap.classList.add("img_wrap");
-        const img = this.getImgWithModalLink(title, link);
-        img_wrap.appendChild(img);
+        if(isYouTubeLink(link)){
+            img_wrap.appendChild(this.getImgWithModalLink(title, link));
+        }
+        else{
+            const img = document.createElement("img");
+            img.src = link;
+            img_wrap.appendChild(img);
+        }
         return img_wrap;
     }
     getImgWithModalLink = (title, link) => {
@@ -240,16 +252,8 @@ class ElmGenerator {
         const card = document.createElement("div");
         card.classList.add("card");
         const c_wrap = document.createElement("div");
-        const img_wrap = document.createElement("div");
-        img_wrap.classList.add("img_wrap", "img_in_card");
-        if(isYouTubeLink(link)){
-            img_wrap.appendChild(this.getImgWithModalLink(title, link));    
-        }
-        else{
-            const img = document.createElement("img");
-            img.src = link;
-            img_wrap.appendChild(img);
-        }
+        const img_wrap = this.getImgWrapWithModalLink(title, link);
+        img_wrap.classList.add("img_in_card");
         c_wrap.appendChild(img_wrap);
         card.appendChild(c_wrap);
         const card_text = document.createElement("div");
@@ -276,7 +280,6 @@ class ElmGenerator {
         document.getElementById("modal").addEventListener("show.bs.modal", (e) => {
             const btn = e.relatedTarget;
             const link = btn.getAttribute("data-youtube-link");
-            console.log(link);
             const title = btn.getAttribute("data-title");
             if (typeof (title) == "string") {
                 document.getElementById("modal_title").innerText = title;
