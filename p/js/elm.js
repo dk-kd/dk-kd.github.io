@@ -3,13 +3,11 @@ class ElmGenerator {
         document.body.innerHTML += `
         <div class="container py-3">
             <div id="div_main"></div>
+            <hr />
+            <div id="content_about"></div>
             <ul class="nav nav-pills nav-fill ul_nav" id="ul_nav">
                 <li class="nav-item">
-                    <a class="nav-link active a_nav" data-bs-toggle="tab" data-bs-target="#div_tab_home"
-                        aria-controls="div_tab_home" aria-selected="true">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link a_nav" data-bs-toggle="tab" data-bs-target="#div_tab_profile"
+                    <a class="nav-link active a_nav" data-bs-toggle="tab" data-bs-target="#div_tab_profile"
                         aria-controls="div_tab_profile" aria-selected="false">Characters</a>
                 </li>
                 <li class="nav-item">
@@ -22,13 +20,9 @@ class ElmGenerator {
                 </li>
             </ul>
             <div class="tab-content" id="tab_content">
-                <div class="tab-pane fade show active" id="div_tab_home" role="tabpanel" aria-labelledby="home-tab">
-                    <div id="content_about"></div>
+                <div class="tab-pane fade" id="div_tab_home" role="tabpanel" aria-labelledby="home-tab">
                     <div id="carousel_about" class="carousel slide" data-bs-ride="carousel">
-                        <div id="carousel_about_inner" class="carousel-inner" style="background-color: lightseagreen;">
-                            
-                        
-                        </div>
+                        <div id="carousel_about_inner" class="carousel-inner" style="background-color: lightseagreen;"></div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#carousel_about"
                             data-bs-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -41,16 +35,18 @@ class ElmGenerator {
                         </button>
                     </div>
                 </div>
-                <div class="tab-pane fade" id="div_tab_profile" role="tabpanel" aria-labelledby="profile-tab">
+                <div class="tab-pane fade show active" id="div_tab_profile" role="tabpanel" aria-labelledby="profile-tab">
                     <div id="content_profile"></div>
                 </div>
                 <div class="tab-pane fade" id="div_tab_story" role="tabpanel" aria-labelledby="story-tab">
                     <div id="content_main_story"></div>
                     <hr />
+                    <div class="d-flex align-items-center">
                     <span class="fs-4 fw-bold">メインストーリー後のイベント(ネタバレ含む)</span>
                     <a class="btn btn-sm btn-primary" data-bs-toggle="collapse" href="#collapse_event_stories" role="button" aria-expanded="false" aria-controls="collapse_event_stories">
                         開く
                     </a>
+                    </div>
                     <div style="min-height:150px;">
                         <div class="collapse" id="collapse_event_stories"></div>
                     </div>
@@ -84,7 +80,6 @@ class ElmGenerator {
         const div = document.getElementById("div_main");
         div.appendChild(createElm("h1", arr.main, "fs-1 fw-bold text-center"));
         div.appendChild(createElm("h2", arr.sub, "fs-2 fw-bold text-center"));
-        div.appendChild(createElm("hr"));
     }
     setContentAbout = (arr, unit_name) => {
         const getCarouselItem = (link, is_active) => {
@@ -175,7 +170,7 @@ class ElmGenerator {
         col2.classList.add("col-md-6");
         const div_col2_wrap = document.createElement("div");
         div_col2_wrap.classList.add("div_col2_wrap");
-        div_col2_wrap.appendChild(createElm("div", "メインストーリーのあらすじ", "fs-5 fw-bold"));
+        div_col2_wrap.appendChild(createElm("div", arr.main.caption ?? "メインストーリーのあらすじ", "fs-5 fw-bold"));
         div_col2_wrap.appendChild(createElm("div", arr.main.description, "mt-2"));
         col2.appendChild(div_col2_wrap);
         row.appendChild(col2);
@@ -208,11 +203,11 @@ class ElmGenerator {
         div.appendChild(createElm("h3", "カバー曲 PickUp"));
         div.appendChild(getRow(arr.cover, false));
     }
-    getImgWrapWithModalLink = (title, link) => {
+    getImgWrapWithModalLink = (title, link, note = null) => {
         const img_wrap = document.createElement("div");
         img_wrap.classList.add("img_wrap");
         if(isYouTubeLink(link)){
-            img_wrap.appendChild(this.getImgWithModalLink(title, link));
+            img_wrap.appendChild(this.getImgWithModalLink(title, link, note));
         }
         else{
             const img = document.createElement("img");
@@ -221,7 +216,7 @@ class ElmGenerator {
         }
         return img_wrap;
     }
-    getImgWithModalLink = (title, link) => {
+    getImgWithModalLink = (title, link, note = null) => {
         const a = document.createElement("a");
         a.classList.add("a_modal");
         a.setAttribute("data-bs-toggle", "modal");
@@ -231,9 +226,17 @@ class ElmGenerator {
         const img = document.createElement("img");
         img.src = this.getYouTubeThumbnailLink(link);
         a.appendChild(img);
+        const div_icon = document.createElement("div");
+        div_icon.classList.add("img_wrap_icon");
         const i = document.createElement("i");
-        i.classList.add("fab", "fa-youtube", "img_wrap_icon");
-        a.appendChild(i);
+        i.classList.add("fab", "fa-youtube");
+        div_icon.appendChild(i);
+        if(note != null){
+            const div_note = document.createElement("div");
+            div_note.innerText = note;
+            div_icon.appendChild(div_note);
+        }
+        a.appendChild(div_icon);
         return a;
     };
     getYouTubeId = (v_link) => {
