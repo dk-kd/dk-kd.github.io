@@ -57,6 +57,9 @@ body{
 .div_in_card{
   width: 90%;
 }
+.div_in_card audio{
+  width: 100%;
+}
 .ul_nav {
   margin-bottom: 10px;
 }
