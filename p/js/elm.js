@@ -41,11 +41,11 @@ class ElmGenerator {
                 <div class="tab-pane fade" id="div_tab_story" role="tabpanel" aria-labelledby="story-tab">
                     <div id="content_main_story"></div>
                     <hr />
-                    <div class="d-flex align-items-center">
-                    <span class="fs-4 fw-bold">メインストーリー後のイベント(ネタバレ含む)</span>
-                    <a class="btn btn-sm btn-primary" data-bs-toggle="collapse" href="#collapse_event_stories" role="button" aria-expanded="false" aria-controls="collapse_event_stories">
-                        開く
-                    </a>
+                    <div id="div_event_stories_menu" class="d-flex align-items-center">
+                        <span class="fs-4 fw-bold">メインストーリー後のイベント(ネタバレ含む)</span>
+                        <a class="btn btn-sm btn-primary" data-bs-toggle="collapse" href="#collapse_event_stories" role="button" aria-expanded="false" aria-controls="collapse_event_stories">
+                            開く
+                        </a>
                     </div>
                     <div style="min-height:150px;">
                         <div class="collapse" id="collapse_event_stories"></div>
@@ -156,7 +156,7 @@ class ElmGenerator {
             return row;
         }
         const getCol = (a) => {
-            return this.getCardCol(a.title, a.link, a.description, createElm("div", a.title, "fs-5 fw-bold"));
+            return this.getCardCol(a.title, a.link, a.description, createElm("div", a.title, "fs-5 fw-bold"), a.audio);
         }
         const div = document.getElementById("content_main_story");
         const row = document.createElement("div");
@@ -176,10 +176,17 @@ class ElmGenerator {
         row.appendChild(col2);
         div.appendChild(row);
         div.appendChild(document.createElement("hr"));
-        div.appendChild(createElm("h3", "メインストーリー注目シーン"));
+        div.appendChild(createElm("h3", "メインストーリー PickUp"));
         div.appendChild(getRow(arr.main.images));
-        const div_events = document.getElementById("collapse_event_stories");
-        div_events.appendChild(getRow(arr.events));
+        if(arr.events.length){
+            const div_events = document.getElementById("collapse_event_stories");
+            div_events.appendChild(getRow(arr.events));
+        }
+        else{
+            const div_events_menu = document.getElementById("div_event_stories_menu");
+            div_events_menu.classList.remove("d-flex");
+            div_events_menu.classList.add("d-none");
+        }
     }
     setContentMusic = (arr) => {
         const getRow = (tmp_arr, is_original) => {
@@ -249,11 +256,11 @@ class ElmGenerator {
         return "https://www.youtube.com/embed/" + this.getYouTubeId(v_link) + "?rel=0";
     };
 
-    getCardCol = (title, link, description, div_head = null) => {
+    getCardCol = (title, link, description, div_head, audio_src) => {
         const col1 = document.createElement("div");
         col1.classList.add("col-md-6", "py-3");
         const card = document.createElement("div");
-        card.classList.add("card");
+        card.classList.add("card", "h-100");
         const c_wrap = document.createElement("div");
         const img_wrap = this.getImgWrapWithModalLink(title, link);
         img_wrap.classList.add("img_in_card");
@@ -263,10 +270,18 @@ class ElmGenerator {
         card_text.classList.add("card-text");
         const div_col2_wrap = document.createElement("div");
         div_col2_wrap.classList.add("div_col2_wrap", "div_in_card");
-        if(div_head != null){
+        if(typeof div_head != "undefined"){
             div_col2_wrap.appendChild(div_head);
         }
         div_col2_wrap.appendChild(createElm("div", description, "mt-2"));
+        if(typeof audio_src != "undefined"){
+            const audio = document.createElement("audio");
+            audio.controls = true;
+            const source = document.createElement("source");
+            source.src = audio_src;
+            audio.appendChild(source);
+            div_col2_wrap.appendChild(audio);
+        }
         card_text.appendChild(div_col2_wrap);
         card.appendChild(card_text);
         col1.appendChild(card);
