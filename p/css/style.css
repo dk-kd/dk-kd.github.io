@@ -35,6 +35,8 @@ body{
   text-decoration: none;
   color: red;
   background-image: radial-gradient(white 0% 40%, transparent 40% 100%);
+  display: flex;
+  align-items: center;
 }
 
 .img_carousel_wrap {
