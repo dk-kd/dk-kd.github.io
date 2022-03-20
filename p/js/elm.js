@@ -101,12 +101,14 @@ class ElmGenerator {
         const p = createElm("p", arr.description);
         p.innerHTML = p.innerHTML.replace(/\{0\}/g, "<b>" + unit_name + "(略称: " + arr.nickname + ")</b>");
         div.appendChild(p);
-        const carousel_inner = document.getElementById("carousel_about_inner");
-        carousel_inner.style.backgroundColor = arr.color;
-        let is_active = true;
-        for(let link of arr.images){
-            carousel_inner.appendChild(getCarouselItem(link, is_active));
-            is_active = false;
+        if(typeof arr.images != "undefined"){
+            const carousel_inner = document.getElementById("carousel_about_inner");
+            carousel_inner.style.backgroundColor = arr.color;
+            let is_active = true;
+            for(let link of arr.images){
+                carousel_inner.appendChild(getCarouselItem(link, is_active));
+                is_active = false;
+            }
         }
     }
     setContentProfile = (arr) => {
@@ -139,6 +141,7 @@ class ElmGenerator {
             div.appendChild(getRow(a, true));
         }
         if(typeof arr.virtual != "undefined"){
+            div.appendChild(document.createElement("hr"));
             div.appendChild(createElm("h4", "バーチャル・シンガー","mt-2"));
             div.appendChild(getRow(arr.virtual, false));
         }
